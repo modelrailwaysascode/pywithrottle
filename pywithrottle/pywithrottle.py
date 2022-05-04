@@ -39,10 +39,10 @@ class PyWiThrottle(object):
         self.cx = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             self.cx.connect((self.server_ip, self.server_port))
-            self.connected = True
         except socket.error:
             self.logger.error('There was an error')
 
+        self.connected = True
         self._register_throttle()
 
     def disconnect(self):
