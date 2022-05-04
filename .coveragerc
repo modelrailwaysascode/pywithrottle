@@ -2,4 +2,5 @@
 #
 # SPDX-License-Identifier: MIT-Modern-Variant
 
-*   @proffalken
+[report]
+show_missing = True

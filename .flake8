@@ -2,4 +2,11 @@
 #
 # SPDX-License-Identifier: MIT-Modern-Variant
 
-*   @proffalken
+[flake8]
+exclude =
+    .git,
+    __pycache__,
+    tests,
+    build,
+    dist
+max-complexity = 10

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 Matthew Macdonald-Wallace <matt@doics.co>
+#
+# SPDX-License-Identifier: MIT-Modern-Variant
+
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
