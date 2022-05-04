@@ -35,7 +35,7 @@ jobs:
       uses: wemake-services/wemake-python-styleguide@0.16.1
     - name: Test with PyTest
       run: |
-        poetry run pytest --cache-clear --cov=pyecb > pytest-coverage.txt
+        poetry run pytest --cache-clear --cov=pywithrottle > pytest-coverage.txt
     - name: Comment coverage
       uses: coroo/pytest-coverage-commentator@v1.0.2
     - name: Build Packages
