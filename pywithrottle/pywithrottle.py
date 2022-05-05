@@ -38,6 +38,7 @@ class PyWiThrottle(object):
         self.recv_buffer_size = 2048
         self.logger = logging.getLogger(__name__)
         self.pp = pprint.PrettyPrinter(indent=2)
+        self.loco_direction = 0
         if dcc_address_scheme not in ["S", "L"]:
             raise Exception
         else:
@@ -94,13 +95,29 @@ class PyWiThrottle(object):
         reg_data = f"M0+{self.dcc_address_scheme}{dcc_id}<;>{self.dcc_address_scheme}{dcc_id}\n" # noqa E501
         print(f"Registering loco with command {reg_data}")
         self.cx.send(reg_data.encode('ascii'))
-        print(self.cx.recv(2048))
+        #print(self.cx.recv(2048))
 
     def function_control(self, loco_id, state, function_id):
         function_string = f"M0A{self.dcc_address_scheme}{loco_id}<;>F{state}{function_id:02d}\n" # noqa E501
         print(f"Sending {function_string} to server")
         self.cx.send(function_string.encode('ascii'))
-        print(self.cx.recv(2048))
+        #print(self.cx.recv(2048))
+
+    def set_speed(self, loco_id, speed):
+        if speed > 126:
+            speed = 126
+        speed_string = f"M0A{self.dcc_address_scheme}{loco_id}<;>V{speed}\n" # noqa E501
+        print(f"Setting speed to {speed}")
+        self.cx.send(speed_string.encode('ascii'))
+        #print(self.cx.recv(2048))
+
+    def change_direction(self, loco_id, direction):
+        print(f"Direction change: {direction}")
+        direction_string = f"M0A{self.dcc_address_scheme}{loco_id}<;>R{direction}\n" # noqa E501
+        print(f"Changing direction")
+        self.cx.send(direction_string.encode('ascii'))
+        self.function_control(1,1,0)
+        #print(self.cx.recv(2048))
 
     def roster(self, data_in):
         print("Roster list")
