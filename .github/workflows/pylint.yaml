@@ -33,7 +33,7 @@ jobs:
         poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with PyTest
       run: |
-        poetry run pytest --cache-clear --cov=pywithrottle > pytest-coverage.txt
+        poetry run pytest --cache-clear --cov=pywithrottle | tee pytest-coverage.txt
     - name: Comment coverage
       uses: coroo/pytest-coverage-commentator@v1.0.2
     - name: Build Packages
