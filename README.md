@@ -8,4 +8,4 @@ SPDX-License-Identifier: MIT-Modern-Variant
 
 This library acts as an interface to the [JMRI](https://www.jmri.org) WiThrottle server.
 
-Full details can be found in the documentation.
+Full details can be found in the [documentation](https://pywithrottle.readthedocs.io).
