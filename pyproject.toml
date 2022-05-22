@@ -21,7 +21,9 @@ mkdocstrings = "^0.18.1"
 mkdocs-material = "^8.2.11"
 flake8 = "^4.0.1"
 reuse = "^0.14.0"
-wemake-python-styleguide = "^0.16.1"
+prettyprint = "^0.1.5"
+"stomp.py" = "^8.0.1"
+Jinja2 = "3.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
