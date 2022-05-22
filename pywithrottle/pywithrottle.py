@@ -58,23 +58,6 @@ class PyWiThrottle(object):
             self.logger.error('There was an error')
 
         sleep(0.5)
-        # data = self.cx.recv(2048).splitlines()
-        # for line in data:
-        #    if line:
-        #        ln = line.decode()
-        #        print(ln )
-        #        if re.match("RL(.*)",ln):
-        #            self.roster(ln)
-        #        if re.match("PPA(.*)",ln):
-        #            print("Power" )
-        #        if re.match("PTT(.*)",ln):
-        #            self.turnoutstate(ln)
-        #        if re.match("PTL(.*)",ln):
-        #            self.turnout(ln)
-        #        if re.match("PRL(.*)",ln):
-        #            self.turnout(ln)
-        #        if re.match("PTA(.*)",ln):
-        #            self.setturnout(ln)
         self.connected = True
 
     def disconnect(self):
@@ -92,12 +75,32 @@ class PyWiThrottle(object):
         self.cx.send(b'NPyWiThrottle\n')
 
     def register_loco(self, dcc_id, roster_id):
+        """
+        register_loco
+
+        Register a new locomotive with the server so we can control it
+
+        Args:
+          dcc_id (int): The DCC Channel that the logo is configured to listen on
+          roster_id (int): The ID to use when selecting from the roster (currently unused)
+        """
+
         reg_data = f"M0+{self.dcc_address_scheme}{dcc_id}<;>{self.dcc_address_scheme}{dcc_id}\n" # noqa E501
         print(f"Registering loco with command {reg_data}")
         self.cx.send(reg_data.encode('ascii'))
         #print(self.cx.recv(2048))
 
     def function_control(self, loco_id, state, function_id):
+        """
+        function_control
+
+        Control the DCC functions of the locomotive (lights, sound, etc)
+
+        Args:
+          loco_id (int): The DCC channel that the logo is configured to listen on
+          state (int): The target state of the DCC function - 0 = off, 1 = on
+          function_id (int): The DCC Function ID to toggle
+        """
         function_string = f"M0A{self.dcc_address_scheme}{loco_id}<;>F{state}{function_id:02d}\n" # noqa E501
         print(f"Sending {function_string} to server")
         self.cx.send(function_string.encode('ascii'))

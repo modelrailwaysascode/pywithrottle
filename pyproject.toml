@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT-Modern-Variant
 
 [tool.poetry]
-name = "piwithrottle"
+name = "pywithrottle"
 version = "0.1.0"
 description = "A library to interface with JMRI's WiThrottle Protocol"
 authors = ["Matthew Macdonald-Wallace <matt@doics.co>"]

@@ -1,11 +1,8 @@
-# .readthedocs.yaml
-# Read the Docs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
-
-# Required
+# SPDX-FileCopyrightText: 2022 Matthew Macdonald-Wallace <matt@doics.co>
+#
+# SPDX-License-Identifier: MIT-Modern-Variant
 version: 2
 
-# Set the version of Python and other tools you might need
 build:
   os: ubuntu-20.04
   tools: {python: "3.9"}
